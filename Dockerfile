@@ -24,8 +24,12 @@ RUN mkdir -v /usr/src/.venv
 
 COPY --from=builder /usr/src/.venv/ /usr/src/.venv/
 
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY . /usr/src
 
 WORKDIR /usr/src/
 
-CMD ["./.venv/bin/python", "-m", "telegram_audio.py"]
+CMD ["./.venv/bin/python", "-m", "telegram_audio"]
