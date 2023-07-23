@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.17 AS builder
+FROM python:3.11 AS builder
 
 RUN pip install pipenv && pip install -U pip
 
@@ -18,7 +18,7 @@ WORKDIR /usr/src
 
 RUN pipenv install --deploy --verbose
 
-FROM python:3.11-alpine3.17 AS runtime
+FROM python:3.11 AS runtime
 
 RUN mkdir -v /usr/src/.venv
 
