@@ -1,6 +1,6 @@
 FROM python:3.11-alpine3.17 AS builder
 
-RUN pip install pipenv
+RUN pip install pipenv && pip install -U pip
 
 # Tell pipenv to create venv in the current directory
 ENV PIPENV_VENV_IN_PROJECT=1
