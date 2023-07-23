@@ -2,6 +2,12 @@ FROM python:3.11-alpine3.17 AS builder
 
 RUN pip install pipenv && pip install -U pip
 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Tell pipenv to create venv in the current directory
 ENV PIPENV_VENV_IN_PROJECT=1
 
